@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+}
+
+body{
+    background-image: linear-gradient(to right, orange, white);
+
+}
+
+.round_borders{
+    border: .2em solid rgb(248, 217, 130);
+    border-radius: 2em;
+}
+
+/* Login Page CSS */
+
+#loginContainer{
+    background-color: black;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 15em;
+    padding: 3em;
+    text-align: center;
+    display: flex;
+}
+
+#loginForm input{
+    margin: auto;
+    margin-bottom: 5%;
+    border: .2em solid rgb(248, 217, 130);
+    padding: 1em .5em;
+    text-align: center;
+    border-radius: 2em;
+    background: none;
+    color: white;
+    /*transition: .25s;*/
+    outline: none;
+    width: 100%;
+}
+
+#loginForm h1{
+    padding-bottom: 1em;
+    color: white;
+    text-transform: uppercase;
+}
+#loginForm p, ul{
+    color: white;
+    margin-bottom: 5%;
+}
+
+#loginForm button{
+    margin: auto;
+    border: .2em solid #2ecc71;
+    padding: 1em 3em;
+    text-align: center;
+    border-radius: 2em;
+    background: none;
+    color: white;
+    transition: .25s;
+    cursor: pointer;
+}
+
+#loginForm button:hover{
+    background: #2ecc71;
+    transition: .75s;
+}
+
+
+/* Nav CSS 
+
+nav{
+    background-color: black;
+}
+
+nav li{
+    list-style: none;
+    text-align: right;
+    font-size: 1.1em;
+    padding-top: .75em;
+    padding-bottom: .75em;
+}
+
+nav a{
+    text-decoration: none;
+    padding: .75em;
+}
+
+
+a:link, a:active, a:visited{
+    color: white;
+}
+
+a:hover{
+    text-decoration: underline;
+    background-color: rgb(43, 43, 43);
+    transition: .5s;
+}
+
+#active{
+    background-color: rgb(43, 43, 43);
+}
+*/
+
+.original-post-image{
+    width: 16em;
+    height: 16em;
+}
+
+.post-list-img{
+    width: 10em;
+    height: 10em;
+}
+
+.post-list{
+    margin-left: 2.5em;
+}
+
+.password_reset_button{
+    margin: auto;
+    border: .2em solid #2ecc71;
+    padding: 1em 3em;
+    text-align: center;
+    border-radius: 2em;
+    background: none;
+    color: white;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.password_reset_button:hover{
+    background: #2ecc71;
+    color: white;
+    transition: .75s;
+    text-decoration: none;
+}
+
+
+.edit_profile_button{
+    margin: auto;
+    border: .2em solid #2ecc71;
+    padding: 1em 3em;
+    text-align: center;
+    border-radius: 2em;
+    background-color: #343a40;
+    color: white;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.edit_profile_button:hover{
+    background: #2ecc71;
+    color: white;
+    transition: .75s;
+    text-decoration: none;
+}
+
+.profile-pic{
+    width: 10em;
+    height: 10em;
+}

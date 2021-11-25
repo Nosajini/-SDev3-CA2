@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <title>Home</title>
+</header>
+<div class="container-fluid text-white">
+    <div class="card bg-dark p-3 m-3">
+        {% if user.is_authenticated %}
+            <h1 class="card-title">Welcome, {{ user.username }}.</h1>
+        {% else %}
+            <h1 class="card-title">Welcome.</h1>
+        {% endif %}
+        <p>These are the 3 latest posts;</p>
+        <div class="container-fluid">
+            <div class="rounded card-columns bg-dark m-3 p-3">
+                {% for post in object_list|slice:"::-1"|slice:":3" %}
+                <div class="card shadow bg-light p-2">
+                    <div class="card shadow">
+                        <div class="card-title text-center">
+                            <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+                            <text class="text-dark">by <a class="" href="{% url 'show_profile' pk=post.author.pk %}">{{ post.author }}</a> in {{ post.board }}</text>
+                        </div>
+                    </div>
+                    <div class="float-left">
+                        <img class="shadow img-thumbnail m-2 post-list-img" src="{{ post.image.url }}"
+                        alt="{{ post.title }}">
+                    </div>
+                    <p class="card-text text-dark">{{ post.body|truncatechars:300 }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

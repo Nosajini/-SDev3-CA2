@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+    {% block content %}
+    <div class="row w-100">
+        <div class="col-4"></div>
+        <div class="container-sm p-3 bg-dark text-light col-4">
+            <form method="post" id="loginForm">
+                {% csrf_token %}
+                <h1>Login</h1>
+                {{ form|crispy }}
+                <button type="submit" value="Log in">Login</button>
+                <a class="password_reset_button" href="{% url 'password_reset' %}">Password Reset</a>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    {% endblock content %}
+
+</html>

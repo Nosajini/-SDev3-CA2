@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row w-100">
+    <div class="col-2"></div>
+    <div class="container ml-3 col-8">
+       <div class="card d-flex flex-nowrap bg-dark rounded p-3">
+          <div class="shadow w-100 bg-light d-inline-block p-2">
+             <div class="card shadow m-1">
+                <h1 class="card-title text-center">{{ profile.user.username }}</h1>
+             </div>
+             <div class="float-left">
+                <img class="original-post-image card shadow" src="{{ profile.profile_pic }}">
+             </div>
+             <p class="card-text p-1">{{profile.body}}</p>
+          </div>
+          {% if user.pk == profile.user.pk %}
+            <a class="edit_profile_button mt-1" href="{% url 'edit_profile' profile.pk %}">Edit Profile</a>
+          {% endif %}
+          <div class="col-5 m-0"></div>
+       </div>
+       <div class="mb-3"></div>
+    </div>
+    <div class="col-2"></div>
+</div>
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+<header>
+   <title>{{ post.title }}</title>
+</header>
+
+{% block content %}
+<h5><a class="ml-3" href="{% url 'posts:post_list' %}">
+      <- Back</a>
+</h5>
+<div class="row w-100">
+   <div class="container ml-3 col-7">
+      <div class="card d-flex flex-nowrap bg-dark rounded p-3">
+         <div class="shadow w-100 bg-light d-inline-block">
+            <div class="card shadow m-1">
+               <h1 class="card-title text-center">{{ post.title }}</h1>
+            </div>
+            <div class="float-left">
+               <img class="shadow m-2 img-thumbnail original-post-image" src="{{ post.image.url }}"
+                  alt="{{ post.title }}">
+            </div>
+            <p class="card-text"><a href="{% url 'show_profile' pk=post.author.pk %}">{{ post.author }}</a>: {{post.body }}</p>
+         </div>
+         {% if user.pk == post.author.pk %}
+         <div class="card-footer bg-dark p-0">
+            <p class="mt-2 mb-0"><a href="{% url 'posts:post_delete' pk=post.id %}">Delete Post</a> | <a href="{% url 'posts:post_update' pk=post.id %}">Edit Post</a> | 
+         {% endif %}
+         <a href="{% url 'posts:comment_new' post.board_id post.id %}">New Comment</a></p>
+         </div>
+         <div class="col-5 m-0"></div>
+      </div>
+      <div class="mb-3"></div>
+      <!--For Comments-->
+</div>
+<div class="w-100 row mt-3">
+      {% for comment in post.comments.all %}
+      <div class="container ml-5 col-7">
+         <div class="card d-flex flex-nowrap bg-dark rounded p-3 mb-1">
+            <div class="shadow w-100 bg-light d-inline-block">
+               {% if comment.has_image %}
+                  <div class="float-left">
+                     <img class="shadow m-2 img-thumbnail original-post-image" src="{{ comment.image.url }}"
+                        alt="{{ comment.author }}'s Image">
+                  </div>
+                  <p class="card-text p-2"><a href="{% url 'show_profile' pk=comment.author.pk %}">{{ comment.author.username }}</a>: {{ comment.comment }}</p>
+               {% else %}
+                  <p class="card-text p-3"><a href="{% url 'show_profile' pk=comment.author.pk %}">{{ comment.author.username }}</a>: {{ comment.comment }}</p>
+               {% endif %}
+            </div>
+         </div>
+      </div>
+   
+      {% endfor %}
+   </div>
+   <div class="col-5"></div>
+</div>
+
+
+{% endblock content %}
