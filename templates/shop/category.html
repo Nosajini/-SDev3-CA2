@@ -16,30 +16,33 @@ See our range of Merch
 {% endblock %}
 {% block content %}
 <!--Breadcrumb navigation-->
-<div class="container">
-{% if category %}
-<div class="row my_row_class">
-    <div class="mx-auto">
-        <p><a href="{% url 'shop:allProdCat' %}">Our Product Collection</a> | {{category.name}}</p>
-    </div>
-</div>
-{% endif %}
-<div class="mx-auto">
+<div class="row text-light">
+<div class="col-1"></div>
+<div class="col-10 container card bg-dark p-3 m-3">
     {% if category %}
-    <img src="{{category.image.url}}" alt="{{category.name}}">
-</div>
-<br>
-<div>
-    <h1 class="text-center my_title">{{category.name}}</h1>
-    <p class="text-justify">{{category.description}}</p>
-</div>
-{% else %}
-<img class="my_image my_image_padding" src="{% static 'images/banner.jpg' %}" alt="Our Products Collection">
+    <div class="row">
+        <div class="mx-auto">
+            <p><a href="{% url 'shop:allProdCat' %}">Our Product Collection</a> | {{category.name}}</p>
+        </div>
+    </div>
+    {% endif %}
+    <div class="card bg-dark p-3 m-3">
+        {% if category %}
+        <img src="{{category.image.url}}" alt="{{category.name}}">
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center my_title">{{category.name}}</h1>
+        <p class="text-justify">{{category.description}}</p>
+    </div>
+    {% else %}
+    <img class="container" src="{% static 'images/storebanner.png' %}"
+        style="height: 24em;" alt="Our Products Collection">
 </div>
 <br>
 <div>
     <h1 class="text-center my_title">Our Products Collection</h1>
-    <p class="text-justify">Find the perfect memorabilia to celebrate your favorite moments.</p>
+    <p class="text-center">Find the perfect memorabilia for you</p>
 </div>
 {% endif %}
 <div class="container">
@@ -47,7 +50,8 @@ See our range of Merch
         {% for product in products %}
         <div class="my_bottom_margin col-9 col-lg-4 col-sm-12 col-md-4">
             <div class="card text-center" style="min-width:18rem;">
-                <a class="img" href="{{product.get_absolute_url}}"><img class="card-img-top my_img" src="{{product.image.url}}" alt="{{product.name}}"></a>
+                <a class="img" href="{{product.get_absolute_url}}"><img class="card-img-top my_img"
+                        src="{{product.image.url}}" alt="{{product.name}}"></a>
                 <div class="card-body">
                     <h4>{{product.name}}</h4>
                     <p>€{{product.price}}</p>
@@ -69,6 +73,7 @@ See our range of Merch
         {% endif %}
     </div>
     <br>
+</div>
 </div>
 </div>
 {% endblock %}
