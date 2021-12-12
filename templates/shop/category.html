@@ -32,7 +32,7 @@ See our range of Merch
     </div>
     <br>
     <div>
-        <h1 class="text-center my_title">{{category.name}}</h1>
+        <h1 class="text-center">{{category.name}}</h1>
         <p class="text-justify">{{category.description}}</p>
     </div>
     {% else %}
@@ -41,15 +41,15 @@ See our range of Merch
 </div>
 <br>
 <div>
-    <h1 class="text-center my_title">Our Products Collection</h1>
+    <h1 class="text-center">Our Products Collection</h1>
     <p class="text-center">Find the perfect memorabilia for you</p>
 </div>
 {% endif %}
 <div class="container">
     <div class="row mx-auto">
         {% for product in products %}
-        <div class="my_bottom_margin col-9 col-lg-4 col-sm-12 col-md-4">
-            <div class="card text-center" style="min-width:18rem;">
+        <div class="col-9 col-lg-4 col-sm-12 col-md-4">
+            <div class="card text-center text-dark" style="min-width:18rem;">
                 <a class="img" href="{{product.get_absolute_url}}"><img class="card-img-top my_img"
                         src="{{product.image.url}}" alt="{{product.name}}"></a>
                 <div class="card-body">
