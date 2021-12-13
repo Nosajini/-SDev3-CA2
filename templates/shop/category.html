@@ -1,24 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block metadescription %}
 {% if category %}
-{{ category.description|truncatewords:155 }}
+    {{ category.description|truncatewords:155 }}
 {% else %}
-Welcome to our store.
+    Welcome to our store.
 {% endif %}
 {% endblock %}
+
 {% block title %}
 {% if category %}
-{{ category.name }} - Merch Store
+    {{ category.name }} - Merch Store
 {% else %}
-See our range of Merch
+    See our range of Merch
 {% endif %}
 {% endblock %}
+
 {% block content %}
 <!--Breadcrumb navigation-->
 <div class="row text-light w-100">
 <div class="col-1"></div>
 <div class="col-10 container card bg-dark p-3 m-3">
+    <form class="d-flex m-auto" action="{% url 'search:searchResult' %}" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
     {% if category %}
     <div class="row">
         <div class="mx-auto">
@@ -38,12 +45,13 @@ See our range of Merch
     {% else %}
     <img class="container" src="{% static 'images/storebanner.png' %}"
         style="height: 24em;" alt="Our Products Collection">
+    <br>
+    <div>
+        <h1 class="text-center">All Products</h1>
+        <p class="text-center">Find the perfect memorabilia for you</p>
+    </div>
 </div>
-<br>
-<div>
-    <h1 class="text-center">Our Products Collection</h1>
-    <p class="text-center">Find the perfect memorabilia for you</p>
-</div>
+
 {% endif %}
 <div class="container">
     <div class="row mx-auto">

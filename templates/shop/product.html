@@ -15,7 +15,7 @@
         <div class="card d-flex flex-nowrap bg-dark rounded p-3">
             <div class="shadow w-100 bg-light d-inline-block">
                 <div class="card shadow m-1">
-                    <h1 class="card-title text-center">{{ product.name }}</h1>
+                    <h1 class="card-title text-center">{{ product.category }}</h1>
                 </div>
                 <div class="float-left">
                     <img class="shadow m-2 img-thumbnail" src="{{ product.image.url }}"alt="{{ product.name }}" style="height:35em; width:40em">
@@ -23,10 +23,11 @@
                 <div class="card-body text-center">
                 <h2 class="">{{product.name}}</h2>
                 <p>£{{product.price}}</p>
-                <p class="">Product Description</p>
+                <p class="text-secondary">Description;</p>
                 <p class="">{{product.description}}</p>
+                <br>
                 {% if product.stock == 0%}
-                <p class=""><b>Out of Stock</b></p>
+                <p class="text-warning"><b>Out of Stock</b></p>
                 {% else %}
                 <a class="btn btn-secondary" href=#>Add to Cart</a>
                 {% endif %}

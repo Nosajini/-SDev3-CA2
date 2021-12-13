@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<header>
+    <title>"{{ query }}"</title>
+ </header>
+<div class="container card bg-dark text-light p-3">
+    <p class="text-center">You have searched for: <b>{{query}}</b></p>
+    <div class="container">
+        <div class="row mx-auto">
+            {% for product in product_list %}
+            <div class="col-9 col-lg-4 col-sm-12 col-md-4">
+                <div class="card text-center text-dark" style="min-width:18rem;">
+                    <a class="img" href="{{product.get_absolute_url}}"><img class="card-img-top my_img"
+                            src="{{product.image.url}}" alt="{{product.name}}"></a>
+                    <div class="card-body border-top">
+                        <h4>{{product.name}}</h4>
+                        <p>€{{product.price}}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="row mx-auto">
+                <p class="text-center text-danger">0 results found.</p>
+                <br>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="text-center">
+        <p><a class="" href="{% url 'shop:allProdCat' %}"><- Back</a></p>
+    </div>
+</div>
+{% endblock %}
