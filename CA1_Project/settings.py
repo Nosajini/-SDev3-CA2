@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'vote',
     'cart',
     'order',
-    'voucher',
+    'vouchers',
     #3rd Party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -155,3 +155,6 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+STRIPE_SECRET_KEY = 'sk_test_51K2dZzHxV2BOXSIAwsPurl8X41DWuhfdXnGVzbq8dUJkPdQgJgYZfE8NK6OAXzijHv2oNIIbzDO9JUy2TvrRDtF100SnISeTde'
+STRIPE_PUBLISHED_KEY = 'pk_test_51K2dZzHxV2BOXSIAqzygAC0QCr2FeAousSmGPk4uwKpAO2zVYinRd7KXwxUQK7oC0vvTHKaTxy7M9PjIYXWVobWF00alIHFoIy'
