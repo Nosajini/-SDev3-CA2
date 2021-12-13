@@ -1,10 +1,23 @@
+"""
 from django.shortcuts import render
 from django.urls.base import reverse_lazy
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import VoteForm
 from .models import Vote
 
+
+class VoteListView(ListView):
+    model = Vote
+    template_name = 'vote_list.html'
+
+class VoteList(ListView):
+    model = Vote
+
+    def get(self, request):
+        votes = Vote.objects.all()
+        return render(request, "vote_list.html", {'votes':votes})
 
 class VoteCreateView(LoginRequiredMixin, CreateView):
     model = Vote
@@ -19,3 +32,4 @@ class VoteCreateView(LoginRequiredMixin, CreateView):
 #def checkVotes():
 
 
+"""

@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls.base import reverse
 from django.views.generic import ListView, DetailView
-from .models import Post, Board, Comment
-from .forms import ImageForm, CommentForm
+from .models import Post, Board, Comment, Vote
+from .forms import ImageForm, CommentForm, VoteForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
@@ -89,3 +90,37 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         form.instance.post_id = self.kwargs.get("post_id")
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+class VoteCreateView(LoginRequiredMixin, CreateView):
+    model = Vote
+    form_class = VoteForm
+    template_name = 'comment_new.html'
+    
+    def get_success_url(self):
+        post_id = self.kwargs.get("post_id")
+        board_id = self.kwargs.get("board_id")
+        return reverse_lazy('posts:post_detail', kwargs={'board_id':board_id, 'post_id':post_id})
+    
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs.get("post_id")
+        return super().form_valid(form)
+
+class VoteListView(ListView):
+    model = Vote
+
+    def get(self, request):
+        votes = Vote.objects.all()
+        return render(request, "vote_list.html", {'votes':votes})
+    
+    def addVote(id):
+        object = Vote.objects.get(id)
+        if get_user_model() not in object.users_votes:
+            object.users_votes.append(get_user_model())
+            object.votes+=1
+            return(reverse_lazy('posts:vote_list'))
+    
+
+class VoteUpdateView(LoginRequiredMixin, UpdateView):
+    model = Vote
+    template_name = 'vote_update.html'
+    success_url = reverse_lazy('posts:vote_list')

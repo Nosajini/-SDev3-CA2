@@ -5,6 +5,8 @@ from django.db import models
 from django.db.models.expressions import OrderBy
 from django.urls import reverse
 
+from shop.models import Category
+
 # Create your models here.
 
 class Board(models.Model):
@@ -71,3 +73,28 @@ class Comment(models.Model):
     class Meta():
         ordering = ('date',)
 
+class Vote(models.Model):
+    post = models.ForeignKey(
+        Post,
+        on_delete = models.CASCADE,
+        related_name="vote",
+        null=False
+    )
+    description = models.CharField(max_length=255, default="None")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='postvote_category')
+    votes = models.IntegerField(default=0)
+    date = models.DateTimeField(auto_now_add=True)
+    users_votes = []
+
+    def addVote(self):
+        if get_user_model() not in self.users_votes:
+            self.users_votes.append(get_user_model())
+            self.votes+=1
+
+    def __str__(self):
+        return self.post.title
+
+    class Meta():
+        ordering = ('date',)
+        verbose_name_plural = 'votes'
+        app_label = 'posts'
