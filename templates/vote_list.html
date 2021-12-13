@@ -4,25 +4,27 @@
 <h1 class="text-center">- Votes -</h1>
 <div class="container-fluid">
     <div class="rounded card-columns bg-dark m-3 p-3">
-        {% for vote in votes %}
-        <div class="card shadow bg-dark p-2 border-light">
-            <div class="card shadow">
-                <div class="card-title text-center">
-                    <h1>{{ vote.post.title }} | {{ vote.category }}</h1>
-                    <text class="text-dark"><a href="{{ vote.post.get_absolute_url }}">Original post</a></text>
+        {% if vote in votes %}
+            {% for vote in votes %}
+            <div class="card shadow bg-dark p-2 border-light">
+                <div class="card shadow">
+                    <div class="card-title text-center">
+                        <h1>{{ vote.post.title }} | {{ vote.category }}</h1>
+                        <text class="text-dark"><a href="{{ vote.post.get_absolute_url }}">Original post</a></text>
+                    </div>
+                </div>
+                <div class="float-left">
+                    <img class="shadow img-thumbnail m-2 post-list-img" src="{{ vote.post.image.url }}" alt="{{ vote.post.title }}">
+                </div>
+                <div id="loginForm">
+                    <h1>Votes: {{vote.votes}}/5</h1>
+                    <a class="text-light" href="{% url 'posts:vote_increment' id=vote.id %}"><button value="{{vote.id}}">Vote</a></button>
                 </div>
             </div>
-            <div class="float-left">
-                <img class="shadow img-thumbnail m-2 post-list-img" src="{{ vote.post.image.url }}"
-                alt="{{ vote.post.title }}">
-            </div>
-            <form action="{% url 'posts:vote_increment' id=vote.id %}" method="post" id="loginForm">
-                {% csrf_token %}
-                <h1>Votes: {{vote.votes}}/5</h1>
-                <button type="submit" value="Vote">Vote</button>
-            </form>           
-        </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            <h1 class="text-warning text-center">No Votes right now!</h1>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

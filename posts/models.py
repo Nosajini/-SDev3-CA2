@@ -84,7 +84,7 @@ class Vote(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='postvote_category')
     votes = models.IntegerField(default=0)
     date = models.DateTimeField(auto_now_add=True)
-    users_votes = []
+    users_votes = []    
 
     def addVote(self):
         if get_user_model() not in self.users_votes:

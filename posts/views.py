@@ -3,8 +3,10 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls.base import reverse
 from django.views.generic import ListView, DetailView
+
+from shop.models import Product
 from .models import Post, Board, Comment, Vote
-from .forms import ImageForm, CommentForm, VoteForm
+from .forms import ImageForm, CommentForm, VoteForm, VoteUpdateForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
@@ -112,7 +114,7 @@ class VoteListView(ListView):
         votes = Vote.objects.all()
         return render(request, "vote_list.html", {'votes':votes})
     
-    def addVote(id):
+    def addVote(self, id):
         object = Vote.objects.get(id)
         if get_user_model() not in object.users_votes:
             object.users_votes.append(get_user_model())
@@ -122,5 +124,21 @@ class VoteListView(ListView):
 
 class VoteUpdateView(LoginRequiredMixin, UpdateView):
     model = Vote
+    form_class = VoteForm
     template_name = 'vote_update.html'
     success_url = reverse_lazy('posts:vote_list')
+
+def VoteDetail(request, id):
+    vote = Vote.objects.get(pk=id)
+    if request.method == 'POST' and request.user.username not in vote.users_votes:
+        vote.users_votes.append(request.user.username)
+        vote.votes += 1
+        if vote.votes >= 5:
+            Product.objects.create(name = (vote.post.title+" "+str(vote.category)[:-1]), category = vote.category, description = vote.description, price = 20,
+                                             image = vote.post.image, stock = 0, available = False)
+            vote.delete()
+            return redirect('posts:vote_list')
+        vote.save()
+        return redirect('posts:vote_list')
+
+    return render(request, 'vote_update.html', {'vote':vote})

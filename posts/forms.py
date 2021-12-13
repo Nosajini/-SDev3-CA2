@@ -19,3 +19,8 @@ class VoteForm(forms.ModelForm):
     class Meta:
         model = Vote
         fields = ['category', 'description',]
+
+class VoteUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Vote
+        fields = ['votes']
