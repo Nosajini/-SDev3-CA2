@@ -24,7 +24,8 @@
          <div class="card-footer bg-dark p-0">
             <p class="mt-2 mb-0"><a href="{% url 'posts:post_delete' pk=post.id %}">Delete Post</a> | <a href="{% url 'posts:post_update' pk=post.id %}">Edit Post</a> | 
          {% endif %}
-         <a href="{% url 'posts:comment_new' post.board_id post.id %}">New Comment</a></p>
+         <a href="{% url 'posts:comment_new' post.board_id post.id %}">New Comment</a>
+         <a href="{% url 'votes:vote_new' post.board_id post.id %}">Create Vote</a></p>
          </div>
          <div class="col-5 m-0"></div>
       </div>

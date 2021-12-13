@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'posts',
     'shop',
     'search',
+    'vote',
     #3rd Party
     'crispy_forms',
     'crispy_bootstrap5',
