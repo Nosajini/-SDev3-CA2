@@ -1,4 +1,5 @@
 from django.db import models
+from django.http import request
 from django.urls import path
 from .views import (PostListView,
                     PostDetailView,
@@ -8,7 +9,9 @@ from .views import (PostListView,
                     PostList,
                     CommentCreateView,
                     VoteCreateView,
+                    VoteDetail,
                     VoteListView,
+                    VoteUpdateView,
                     )
 
 app_name = 'posts'
@@ -23,5 +26,5 @@ urlpatterns = [
     path('<uuid:board_id>/<uuid:post_id>/comment_new', CommentCreateView.as_view(), name='comment_new'),
     path('<uuid:board_id>/<uuid:post_id>/vote_new', VoteCreateView.as_view(), name='vote_new'),
     path('votes/', VoteListView.as_view(), name='vote_list'),
-    path('votes/<int:id>', VoteListView.addVote, name='vote_increment')
+    path('votes/<int:id>', VoteDetail, name='vote_increment')
 ]
