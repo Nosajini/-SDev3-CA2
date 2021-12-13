@@ -43,16 +43,13 @@ INSTALLED_APPS = [
     'posts',
     'shop',
     'search',
-<<<<<<< HEAD
-=======
-    'vote',
     'cart',
     'order',
     'vouchers',
->>>>>>> c2d9a87e84766cd9fa9f7f4132e638d6f61412c7
     #3rd Party
     'crispy_forms',
     'crispy_bootstrap5',
+    'stripe',
 ]
 
 MIDDLEWARE = [
