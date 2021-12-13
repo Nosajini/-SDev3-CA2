@@ -43,6 +43,13 @@ INSTALLED_APPS = [
     'posts',
     'shop',
     'search',
+<<<<<<< HEAD
+=======
+    'vote',
+    'cart',
+    'order',
+    'vouchers',
+>>>>>>> c2d9a87e84766cd9fa9f7f4132e638d6f61412c7
     #3rd Party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -63,7 +70,9 @@ ROOT_URLCONF = 'CA1_Project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(BASE_DIR.joinpath('templates'))],
+        'DIRS': [str(BASE_DIR.joinpath('templates')),
+                 str(BASE_DIR.joinpath('cart', 'templates')),
+                 str(BASE_DIR.joinpath('order', 'templates')),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -149,3 +158,6 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+STRIPE_SECRET_KEY = 'sk_test_51K2dZzHxV2BOXSIAwsPurl8X41DWuhfdXnGVzbq8dUJkPdQgJgYZfE8NK6OAXzijHv2oNIIbzDO9JUy2TvrRDtF100SnISeTde'
+STRIPE_PUBLISHED_KEY = 'pk_test_51K2dZzHxV2BOXSIAqzygAC0QCr2FeAousSmGPk4uwKpAO2zVYinRd7KXwxUQK7oC0vvTHKaTxy7M9PjIYXWVobWF00alIHFoIy'
