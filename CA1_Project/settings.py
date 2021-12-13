@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'search',
     'vote',
     'cart',
+    'order',
+    'voucher',
     #3rd Party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -65,7 +67,9 @@ ROOT_URLCONF = 'CA1_Project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(BASE_DIR.joinpath('templates'))],
+        'DIRS': [str(BASE_DIR.joinpath('templates')),
+                 str(BASE_DIR.joinpath('cart', 'templates')),
+                 str(BASE_DIR.joinpath('order', 'templates')),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
