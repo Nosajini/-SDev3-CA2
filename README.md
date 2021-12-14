@@ -14,6 +14,10 @@ Sign Up Page / View / Template,
 Change Password Page / View / Template,
 Password Reset Page / View / Template,
 Profile Template / Picture
+Cart,
+Order List / Detail,
+Checkout,
+Stripe Payment
 
 Jason
 -----
