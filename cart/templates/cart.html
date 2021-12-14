@@ -87,11 +87,6 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>
-								Please review your shopping cart items before proceeding with the order payment.
-							</td>
-						</tr>
 						<td>
 							Please review your shopping
 							cart items before proceeding with the order payment.
@@ -101,8 +96,7 @@
 							<tr class="subtotal">
 							<td>Total</td>
 							<td colspan="4"></td>
-							<td class="num">€{{
-							total|floatformat:"2" }}</td>
+							<td class="num">€{{total|floatformat:"2" }}</td>
 							</tr>
 							<tr>
 							<td>
@@ -118,21 +112,15 @@
 							<td>Total</td>
 							<td colspan="4"></td>
 							<td class="num">
-							€{{
-							new_total|floatformat:"2" }}
+							€{{new_total|floatformat:"2" }}
 							</td>
 							</tr>
-							10
-							The if else block of code that you just copied into cart.html will display the voucher
-							details, discount, and new total if a voucher exists as shown below:
-							The code below is the code that you just copied in to cart.html. This will display the
-							form to enter a voucher code and apply it to the current cart.
 							{% else %}
 							<tr class="total">
 							<td>Total</td>
 							<td colspan="4"></td>
 							<td class="num">
-							€{{ total|floatformat:"2" }}
+							€{{total|floatformat:"2" }}
 							</td>
 							</tr>
 							{% endif %}
@@ -163,6 +151,7 @@
 					</script>
 					</form>
 					
+				<br>
 				<div class="mx-auto">
 					<a href="{% url 'shop:allProdCat' %}" class="btn btn-secondary btn-block my_custom_button">Continue Shopping</a>
 				</div>

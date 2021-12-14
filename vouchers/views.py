@@ -7,7 +7,7 @@ from .forms import VoucherApplyForm
 
 @require_POST
 def voucher_apply(request):
-    now = timezone.now
+    now = timezone.now()
     form = VoucherApplyForm(request.POST)
     if form.is_valid():
         code = form.cleaned_data['code']

@@ -141,7 +141,7 @@ def cart_detail(request, total=0, counter=0, cart_items = None):
             return e
     return render(request, 'cart.html', {'cart_items':cart_items, 'total':total, 'counter':counter,
                                         'data_key':data_key, 'stripe_total':stripe_total,
-                                        'description':description, 'voucher_apply_form': voucher_apply_form,
+                                        'description':description, 'voucher_apply_form':voucher_apply_form,
                                         'new_total':new_total, 'voucher':voucher, 'discount':discount})
 
 def cart_remove(request, product_id):
