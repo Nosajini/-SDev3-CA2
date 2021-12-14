@@ -26,7 +26,7 @@ Order Details - Perfect Cushion Store
     {{ order.billingCountry }}<br>
     </td>
     </tr>
-    <tr>
+    <tr class="bg-secondary">
     <td><b>Product Description</b></td>
     <td><b>Qty</b></td>
     <td><b>Unit Price</b></td>
@@ -41,11 +41,11 @@ Order Details - Perfect Cushion Store
     </tr>
     {% endfor %}
     <tr>
-    <td class="text-right" colspan="3"><b>Total</b></td>
+    <td class="text-right bg-secondary" colspan="3"><b>Total</b></td>
     <td>£{{ order.total }}</td>
     </tr>
     <tr>
-    <td class="text-right" colspan="3"><b>Total Paid</b></td>
+    <td class="text-right bg-secondary" colspan="3"><b>Total Paid</b></td>
     <td>£{{ order.total }}</td>
     </tr>
     <tr>
