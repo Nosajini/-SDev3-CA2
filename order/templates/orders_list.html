@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}
-Order History - Perfect Cushion Store
+History
 {% endblock %}
 {% block content %}
 <div>
@@ -21,13 +21,13 @@ Order History - Perfect Cushion Store
     </tr>
     </thead>
     <tbody>
-    {% for order in order_details %}
+        {% for order in order_details %}
         <tr>
-        <td>{{ order.id }}</td>
-        <td>{{ order.created|date:"d M Y" }}</td>
-        <td>{{ order.total }}</td>
-        <td><i class="fas fa-check"></i>&nbsp;Complete</td>
-        <td><a href="{% url 'order:order_detail' order.id %}">View order</a></td>
+            <td>{{ order.id }}</td>
+            <td>{{ order.created|date:"d M Y" }}</td>
+            <td>{{ order.total }}</td>
+            <td><i class="fas fa-check"></i>&nbsp;Complete</td>
+            <td><a href="{% url 'order:order_detail' order.id %}">View order</a></td>
         </tr>
     {% endfor %}
     </tbody>
