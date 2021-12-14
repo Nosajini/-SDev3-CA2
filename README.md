@@ -13,11 +13,11 @@ Login Page / View / Template,
 Sign Up Page / View / Template,
 Change Password Page / View / Template,
 Password Reset Page / View / Template,
-Profile Template / Picture
+Profile Template / Picture,
 Cart,
-Order List / Detail,
+Order List / Detail / Thanks Page,
 Checkout,
-Stripe Payment
+Stripe Payment / Verification
 
 Jason
 -----
