@@ -57,9 +57,9 @@
     <div class="row mx-auto">
         {% for product in products %}
         <div class="col-9 col-lg-4 col-sm-12 col-md-4">
-            <div class="card text-center text-dark" style="min-width:18rem;">
-                <a class="img" href="{{product.get_absolute_url}}"><img class="card-img-top my_img"
-                        src="{{product.image.url}}" alt="{{product.name}}"></a>
+            <div class="card text-center text-dark mt-2">
+                <a class="img" href="{{product.get_absolute_url}}"><img class="card-img-top my_img" src="{{product.image.url}}" alt="{{product.name}}"
+                    style="max-width: 400px; max-height: 350px; width: 100%;"></a>
                 <div class="card-body border-top">
                     <h4>{{product.name}}</h4>
                     <p>€{{product.price}}</p>
