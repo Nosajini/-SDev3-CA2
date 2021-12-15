@@ -19,7 +19,7 @@
           <h2 class="card-text">{{ vote.description }}</h2>
           <form action="" method="post" id="loginForm">
             {% csrf_token %}
-            <h1 class="text-dark">Votes: {{vote.votes}}/5</h1>
+            <h1 class="text-dark">Votes: {{vote.votes}}/3</h1>
             <button class="text-dark" type="submit" value="Vote">Vote</button>
         </form>        
        </div>

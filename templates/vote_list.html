@@ -4,7 +4,7 @@
 <h1 class="text-center">- Votes -</h1>
 <div class="container-fluid">
     <div class="rounded card-columns bg-dark m-3 p-3">
-        {% if vote in votes %}
+        {% if votes %}
             {% for vote in votes %}
             <div class="card shadow bg-dark p-2 border-light">
                 <div class="card shadow">
@@ -16,8 +16,8 @@
                 <div class="float-left">
                     <img class="shadow img-thumbnail m-2 post-list-img w-100" src="{{ vote.post.image.url }}" alt="{{ vote.post.title }}">
                 </div>
-                <div id="loginForm">
-                    <h1>Votes: {{vote.votes}}/5</h1>
+                <div id="loginForm" class="text-center">
+                    <h1>Votes: {{vote.votes}}/3</h1>
                     <a class="text-light" href="{% url 'posts:vote_increment' id=vote.id %}"><button value="{{vote.id}}">Vote</a></button>
                 </div>
             </div>

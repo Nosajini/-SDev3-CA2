@@ -2,10 +2,12 @@ import uuid
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import deletion
 from django.db.models.expressions import OrderBy
+from django.shortcuts import redirect
 from django.urls import reverse
 
-from shop.models import Category
+from shop.models import Category, Product
 
 # Create your models here.
 
@@ -86,10 +88,12 @@ class Vote(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     users_votes = []    
 
-    def addVote(self):
-        if get_user_model() not in self.users_votes:
-            self.users_votes.append(get_user_model())
-            self.votes+=1
+    def incrementVote(self, user_username):
+        print(self.post.title)
+        print(self.users_votes)
+        if user_username not in self.users_votes:
+            self.users_votes.append(user_username)
+            self.votes += 1
 
     def __str__(self):
         return self.post.title

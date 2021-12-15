@@ -130,15 +130,15 @@ class VoteUpdateView(LoginRequiredMixin, UpdateView):
 
 def VoteDetail(request, id):
     vote = Vote.objects.get(pk=id)
-    if request.method == 'POST' and request.user.username not in vote.users_votes:
-        vote.users_votes.append(request.user.username)
-        vote.votes += 1
-        if vote.votes >= 5:
+    user_username = request.user.username
+    if request.method == 'POST':
+        vote.incrementVote(user_username=user_username)
+        if vote.votes >= 3:
             Product.objects.create(name = (vote.post.title+" "+str(vote.category)[:-1]), category = vote.category, description = vote.description, price = 20,
-                                             image = vote.post.image, stock = 0, available = False)
+                                                image = vote.post.image, stock = 0, available = False)
+            vote.users_votes = []
             vote.delete()
             return redirect('posts:vote_list')
         vote.save()
-        return redirect('posts:vote_list')
-
     return render(request, 'vote_update.html', {'vote':vote})
+    
